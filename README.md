@@ -99,7 +99,7 @@ julia> bpd = ldpc.bp_decoder(
            error_rate=0.1, # the error rate on each bit
            max_iter=n, # the maximum iteration depth for BP
            bp_method="product_sum", # BP method. The other option is `minimum_sum'
-           channel_probs=[nothing] # channel probability probabilities. Will overide error rate.
+           channel_probs=[nothing] # channel probability probabilities. Will override error rate.
        )
 PyObject <ldpc.bp_decoder.bp_decoder object at 0x7fea8283ab80>
 
