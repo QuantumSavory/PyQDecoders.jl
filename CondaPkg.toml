@@ -1,0 +1,6 @@
+
+[pip.deps]
+pymatching = ""
+ldpc = ""
+numpy = ""
+scipy = ""

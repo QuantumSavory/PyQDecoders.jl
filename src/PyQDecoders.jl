@@ -1,23 +1,20 @@
 module PyQDecoders
-import Conda
-using PyCall
+import PythonCall
 
-const sps = PyNULL()
-const np = PyNULL()
-const pm = PyNULL()
-const ldpc = PyNULL()
+const sp = PythonCall.pynew()
+const sps = PythonCall.pynew()
+const np = PythonCall.pynew()
+const pm = PythonCall.pynew()
+const ldpc = PythonCall.pynew()
+const ldpccodes = PythonCall.pynew()
 
 function __init__()
-    copy!(sps, pyimport_conda("scipy.sparse", "scipy"))
-    copy!(np, pyimport_conda("numpy", "numpy"))
-    if PyCall.conda
-        Conda.pip_interop(true)
-        Conda.pip("install", "pymatching")
-        Conda.pip("install", "ldpc")
-    end
-    copy!(pm, pyimport_conda("pymatching", "pymatching"))
-    copy!(ldpc, pyimport_conda("ldpc", "ldpc"))
-    pyimport("ldpc.codes")
+    PythonCall.pycopy!(sp, PythonCall.pyimport("scipy"))
+    PythonCall.pycopy!(sps, PythonCall.pyimport("scipy.sparse"))
+    PythonCall.pycopy!(np, PythonCall.pyimport("numpy"))
+    PythonCall.pycopy!(pm, PythonCall.pyimport("pymatching"))
+    PythonCall.pycopy!(ldpc, PythonCall.pyimport("ldpc"))
+    PythonCall.pycopy!(ldpccodes, PythonCall.pyimport("ldpc.codes"))
 end
 
 end # module

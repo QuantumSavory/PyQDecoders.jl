@@ -19,14 +19,14 @@ function (::MayThrowIsOk)(report_type::Type{<:InferenceErrorReport}, @nospeciali
 end
 
 # imported to be declared as modules filtered out from analysis result
-using Conda, PyCall
+using CondaPkg, PythonCall
 
 @testset "JET checks" begin
     rep = report_package("PyQDecoders";
         report_pass=MayThrowIsOk(),
         ignored_modules=(
-            AnyFrameModule(Conda),
-            AnyFrameModule(PyCall),
+            AnyFrameModule(CondaPkg),
+            AnyFrameModule(PythonCall),
         )
     )
     @show rep
