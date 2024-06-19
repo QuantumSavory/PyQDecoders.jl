@@ -3,5 +3,4 @@
 pymatching = ""
 ldpc = ""
 numpy = "<2"
-cython = "<3"
 scipy = ""
