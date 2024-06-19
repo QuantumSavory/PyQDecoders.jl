@@ -1,7 +1,7 @@
 name = "PyQDecoders"
 uuid = "17f5de1a-9b79-4409-a58d-4d45812840f7"
 authors = ["Stefan Krastanov <stefan@krastanov.org>"]
-version = "0.2.0"
+version = "0.2.1"
 
 [deps]
 PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"

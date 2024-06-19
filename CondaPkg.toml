@@ -2,5 +2,5 @@
 [pip.deps]
 pymatching = ""
 ldpc = ""
-numpy = ""
+numpy = "<2"
 scipy = ""
