@@ -2,4 +2,3 @@
 numpy = "<2"
 scipy = ""
 pymatching = ""
-ldpc = ""
