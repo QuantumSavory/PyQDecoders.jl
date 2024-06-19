@@ -1,6 +1,7 @@
+[deps]
+numpy = "<2"
+scipy = ""
 
 [pip.deps]
 pymatching = ""
 ldpc = ""
-numpy = "<=1.26"
-scipy = ""
