@@ -1,7 +1,5 @@
-[deps]
+[pip.deps]
 numpy = "<2"
 scipy = ""
-
-[pip.deps]
 pymatching = ""
 ldpc = ""
