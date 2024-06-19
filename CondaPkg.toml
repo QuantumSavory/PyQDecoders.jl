@@ -1,4 +1,0 @@
-[pip.deps]
-numpy = "<2"
-scipy = ""
-pymatching = ""
