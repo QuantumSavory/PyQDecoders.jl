@@ -1,0 +1,5 @@
+[pip.deps]
+numpy = "<2"
+scipy = ""
+pymatching = ""
+ldpc = "@https://github.com/QuantumSavory/ldpc/archive/refs/heads/numpy2.zip"
