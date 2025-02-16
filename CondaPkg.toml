@@ -1,5 +1,10 @@
+[deps]
+python = ">=3.10"
+
 [pip.deps]
-numpy = "<2"
+numpy = ""
 scipy = ""
 pymatching = ""
-ldpc = "@https://github.com/QuantumSavory/ldpc/archive/refs/heads/numpy2.zip"
+ldpc = ">=2.2.8"
+sinter = ">=1.14"
+stim = ">=1.14"
