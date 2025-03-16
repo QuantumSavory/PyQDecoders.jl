@@ -103,7 +103,6 @@ Python: array([0, 1, 0])
 
 ## `pecos`
 
-
 The python pecos module is immediately available:
 
 ```
