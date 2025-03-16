@@ -116,7 +116,7 @@ Running the example from `pecos`'s [original example](https://quantum-pecos.read
 on 2D version of minimum-weight-perfect-matching decoder:
 
 ```
-julia> using PyQDecoders: pecos
+julia> using PyQDecoders: pecos, pecosdecoders
 
 julia> depolar = pecos.error_gens.DepolarGen(model_level="code_capacity");
 
@@ -132,7 +132,7 @@ julia> circ_runner = pecos.circuit_runners.Standard(seed=1);
 
 julia> state = pecos.simulators.SparseSim(surface.num_qudits);
 
-julia> decode = pecos.decoders.MWPM2D(surface).decode;
+julia> decode = pecosdecoders.MWPM2D(surface).decode;
 
 julia> meas, err = circ_runner.run(state, logic, error_gen=depolar, error_params=Dict("p" => 0.1));
 
