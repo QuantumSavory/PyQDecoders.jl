@@ -17,7 +17,6 @@ function __init__()
     PythonCall.pycopy!(ldpc, PythonCall.pyimport("ldpc"))
     PythonCall.pycopy!(ldpccodes, PythonCall.pyimport("ldpc.codes"))
     PythonCall.pycopy!(fb, PythonCall.pyimport("fusion_blossom"))
-
 end
 
 end # module
