@@ -100,3 +100,63 @@ julia> syndrome = PyArray(H)*error .% 2
 julia> decoding = bpd.decode(np.array(syndrome))
 Python: array([0, 1, 0])
 ```
+
+## `mqt.qecc`
+
+The python mqt.qecc module is immediately available:
+
+```
+julia> using PyQDecoders
+
+julia> PyQDecoders.mqt_qecc
+Python: <module 'mqt_qecc' from ...>
+```
+
+Running the example from `mqt_qecc`'s original Readme:
+
+```
+julia> using PyQDecoders: np, mqt_qecc;
+
+julia> H = [[1, 0, 0, 1, 0, 1, 1], [0, 1, 0, 1, 1, 0, 1], [0, 0, 1, 0, 1, 1, 1]];
+
+julia> code = mqt_qecc.Code(H, H);
+
+julia> UFHeuristic = mqt_qecc.UFHeuristic;
+
+julia> decoder = mqt_qecc.UFHeuristic();
+
+julia> decoder.set_code(code);
+
+julia> sample_iid_pauli_err = mqt_qecc.sample_iid_pauli_err;
+
+julia> x_err = sample_iid_pauli_err(code.n, 0.05);
+
+julia> decoder.decode(code.get_x_syndrome(x_err));
+
+julia> result = decoder.result;
+
+julia> residual_err = np.array(x_err) .⊻ np.array(result.estimate);
+
+julia> is_stabilizer = code.is_x_stabilizer(residual_err);
+
+julia> println("Is residual error a stabilizer? ", is_stabilizer);
+```
+
+LightsOut decoder for color codes
+
+```
+julia> using PyQDecoders: np, mqt_qecc, cc_decoder;
+
+julia> side_length = 3;
+
+julia> lattice = mqt_qecc.codes.HexagonalColorCode(side_length);
+
+julia> problem = cc_decoder.LightsOut(lattice.faces_to_qubits, lattice.qubits_to_faces);
+
+julia> problem.preconstruct_z3_instance();
+
+julia> lights = [true, false, false];
+
+julia> switches, constr_time, solve_time = problem.solve(lights)
+Python: ([0, 1, 0, 0, 0, 0, 0], 0.06688149999990856, 0.001489878000029421)
+```
