@@ -100,3 +100,45 @@ julia> syndrome = PyArray(H)*error .% 2
 julia> decoding = bpd.decode(np.array(syndrome))
 Python: array([0, 1, 0])
 ```
+
+## panqec
+
+The python panqec module is immediately available:
+
+```
+julia> using PyQDecoders
+
+julia> PyQDecoders.panqec
+Python: <module 'panqec' from ...>
+```
+
+Running the example from `panqec` [original tutorial](https://panqec.readthedocs.io/en/latest/tutorials/Panqec%20basics.html):
+
+```
+julia> using PyQDecoders: panqec, panqecdecoders
+
+julia> Toric2DCode = panqec.codes.Toric2DCode;
+
+julia> PauliErrorModel = panqec.error_models.PauliErrorModel;
+
+julia> MatchingDecoder = panqecdecoders.MatchingDecoder;
+
+julia> code = Toric2DCode(4)
+
+julia> error_model = PauliErrorModel(0.2, 0.3, 0.5)
+
+julia> p = 0.1
+
+julia> decoder = MatchingDecoder(code, error_model, p)
+
+julia> errors = error_model.generate(code, p)
+
+julia> syndrome = code.measure_syndrome(errors)
+
+julia> println("Errors: ", errors)
+Errors: [0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+ 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+
+julia> println("Syndrome: ", syndrome)
+Syndrome: [0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0]
+```
