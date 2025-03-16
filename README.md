@@ -100,3 +100,35 @@ julia> syndrome = PyArray(H)*error .% 2
 julia> decoding = bpd.decode(np.array(syndrome))
 Python: array([0, 1, 0])
 ```
+
+## fusion-blossom
+
+The python fusion-blossom module is immediately available:
+
+```
+julia> using PyQDecoders
+
+julia> PyQDecoders.fb
+Python: <module 'fusion_blossom' from ...>
+```
+
+Running the example from `fusion-blossom`'s original [example qec codes demo](https://tutorial.fusionblossom.com/demo/example-qec-codes.html):
+
+```
+julia> using PyQDecoders: fb;
+
+julia> code = fb.CodeCapacityPlanarCode(d=11, p=0.05, max_half_weight=500);
+
+julia> syndrome = code.generate_random_errors(seed=1000);
+
+julia> initializer = code.get_initializer();
+
+julia> solver = fb.SolverSerial(initializer);
+
+julia> solver.solve(syndrome);
+
+julia> subgraph = solver.subgraph();
+
+julia> println("Minimum Weight Parity Subgraph (MWPS): ", subgraph)
+Minimum Weight Parity Subgraph (MWPS): [14, 24, 26, 34, 66, 68, 93, 107, 144, 159, 161, 169]
+```
