@@ -112,7 +112,7 @@ julia> PyQDecoders.mwpf
 Python: <module 'mwpf' from ...>
 ```
 
-Running the example from `mwpf`'s original Readme:
+Running the example from `mwpf`'s [original Readme](https://github.com/yuewuo/mwpf):
 
 ```
 julia> using PyQDecoders: mwpf
