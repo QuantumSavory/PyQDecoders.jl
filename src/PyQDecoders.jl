@@ -7,6 +7,9 @@ const np = PythonCall.pynew()
 const pm = PythonCall.pynew()
 const ldpc = PythonCall.pynew()
 const ldpccodes = PythonCall.pynew()
+const panqec = PythonCall.pynew()
+const panqeccodes = PythonCall.pynew()
+const panqecdecoders = PythonCall.pynew()
 
 function __init__()
     PythonCall.pycopy!(sp, PythonCall.pyimport("scipy"))
@@ -15,6 +18,9 @@ function __init__()
     PythonCall.pycopy!(pm, PythonCall.pyimport("pymatching"))
     PythonCall.pycopy!(ldpc, PythonCall.pyimport("ldpc"))
     PythonCall.pycopy!(ldpccodes, PythonCall.pyimport("ldpc.codes"))
+    PythonCall.pycopy!(panqec, PythonCall.pyimport("panqec"))
+    PythonCall.pycopy!(panqeccodes, PythonCall.pyimport("panqec.codes"))
+    PythonCall.pycopy!(panqecdecoders, PythonCall.pyimport("panqec.decoders"))
 end
 
 end # module
