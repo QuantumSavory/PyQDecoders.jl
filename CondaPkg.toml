@@ -1,6 +1,6 @@
 [deps]
 python = ">=3.10, <3.14"
-stim = ">=1.14"
+stim = "*"
 
 [pip.deps]
 numpy = ""
