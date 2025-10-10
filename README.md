@@ -221,3 +221,56 @@ Errors: [0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
 julia> println("Syndrome: ", syndrome)
 Syndrome: [0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0]
 ```
+
+## `mwpf`
+
+The python mwpf module is immediately available:
+
+```
+julia> using PyQDecoders
+
+julia> PyQDecoders.mwpf
+Python: <module 'mwpf' from ...>
+```
+
+Running the example from `mwpf`'s [original Readme](https://github.com/yuewuo/mwpf):
+
+```
+julia> using PyQDecoders: mwpf
+
+julia> HyperEdge = mwpf.HyperEdge;
+
+julia> SolverInitializer = mwpf.SolverInitializer;
+
+julia> SolverSerialJointSingleHair = mwpf.SolverSerialJointSingleHair;
+
+julia> SyndromePattern = mwpf.SyndromePattern;
+
+julia> vertex_num = 4;
+
+julia> weighted_edges = [
+       HyperEdge([0, 1], 100),  # [vertices], weight
+       HyperEdge([1, 2], 100),
+       HyperEdge([2, 3], 100),
+       HyperEdge([0], 100),  # boundary vertex
+       HyperEdge([0, 1, 2], 60),  # hyperedge
+       ];
+
+julia> initializer = SolverInitializer(vertex_num, weighted_edges);
+
+julia> hyperion = SolverSerialJointSingleHair(initializer);
+
+julia> syndrome = [0, 1, 3];
+
+julia> hyperion.solve(SyndromePattern(syndrome));
+
+julia> hyperion_subgraph = hyperion.subgraph();
+
+julia> println("Hyperion Subgraph: ", hyperion_subgraph)
+Hyperion Subgraph: [2, 4]
+
+julia> _, bound = hyperion.subgraph_range();
+
+julia> println("Subgraph Range: ", (bound.lower, bound.upper))
+Subgraph Range: (<py OrderedFloat(160.0)>, <py OrderedFloat(160.0)>)
+```
