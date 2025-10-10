@@ -7,6 +7,7 @@ const np = PythonCall.pynew()
 const pm = PythonCall.pynew()
 const ldpc = PythonCall.pynew()
 const ldpccodes = PythonCall.pynew()
+const fb = PythonCall.pynew()
 
 function __init__()
     PythonCall.pycopy!(sp, PythonCall.pyimport("scipy"))
@@ -15,6 +16,7 @@ function __init__()
     PythonCall.pycopy!(pm, PythonCall.pyimport("pymatching"))
     PythonCall.pycopy!(ldpc, PythonCall.pyimport("ldpc"))
     PythonCall.pycopy!(ldpccodes, PythonCall.pyimport("ldpc.codes"))
+    PythonCall.pycopy!(fb, PythonCall.pyimport("fusion_blossom"))
 end
 
 end # module
