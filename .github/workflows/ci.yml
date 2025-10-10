@@ -41,7 +41,7 @@ jobs:
             version: '1'
             threads: '1'
           - arch: x64
-            os: windows-latest
+            os: windows-2022
             version: '1'
             threads: '1'
     steps:
