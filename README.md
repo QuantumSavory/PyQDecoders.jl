@@ -50,7 +50,7 @@ julia> solution_weight
 Python: 5.0
 ```
 
-## ldpc
+## `ldpc`
 
 The python ldpc module is immediately available:
 
@@ -101,7 +101,86 @@ julia> decoding = bpd.decode(np.array(syndrome))
 Python: array([0, 1, 0])
 ```
 
-## panqec
+## `fusion-blossom`
+
+The python fusion-blossom module is immediately available:
+
+```
+julia> using PyQDecoders
+
+julia> PyQDecoders.fb
+Python: <module 'fusion_blossom' from ...>
+```
+
+Running the example from `fusion-blossom`'s original [example qec codes demo](https://tutorial.fusionblossom.com/demo/example-qec-codes.html):
+
+```
+julia> using PyQDecoders: fb;
+
+julia> code = fb.CodeCapacityPlanarCode(d=11, p=0.05, max_half_weight=500);
+
+julia> syndrome = code.generate_random_errors(seed=1000);
+
+julia> initializer = code.get_initializer();
+
+julia> solver = fb.SolverSerial(initializer);
+
+julia> solver.solve(syndrome);
+
+julia> subgraph = solver.subgraph();
+
+julia> println("Minimum Weight Parity Subgraph (MWPS): ", subgraph)
+Minimum Weight Parity Subgraph (MWPS): [14, 24, 26, 34, 66, 68, 93, 107, 144, 159, 161, 169]
+```
+
+## `pecos`
+
+The python pecos module is immediately available:
+
+```
+julia> using PyQDecoders
+
+julia> PyQDecoders.pecos
+Python: <module 'pecos' from ...>
+```
+
+Running the example from `pecos`'s [original example](https://quantum-pecos.readthedocs.io/en/latest/api_guide/decoders.html)
+on 2D version of minimum-weight-perfect-matching decoder:
+
+```
+julia> using PyQDecoders: pecos, pecosdecoders
+
+julia> depolar = pecos.error_gens.DepolarGen(model_level="code_capacity");
+
+julia> surface = pecos.qeccs.Surface4444(distance=3);
+
+julia> logic = pecos.circuits.LogicalCircuit();
+
+julia> logic.append(surface.gate("ideal init |0>"));
+
+julia> logic.append(surface.gate("I", num_syn_extract=1));
+
+julia> circ_runner = pecos.circuit_runners.Standard(seed=1);
+
+julia> state = pecos.simulators.SparseSim(surface.num_qudits);
+
+julia> decode = pecosdecoders.MWPM2D(surface).decode;
+
+julia> meas, err = circ_runner.run(state, logic, error_gen=depolar, error_params=Dict("p" => 0.1));
+
+julia> print("Measurement outcomes (syndrome):", meas)
+Measurement outcomes (syndrome):{(1, 0, 7): {3: 1, 5: 1, 15: 1}}
+
+julia> print("Errors introduced:", err)
+Errors introduced:{(1, 0, 0): {'after': QuantumCircuit(params={'circuit_type': 'faults'}, ticks=[{'Z': {4}, 'X': {10}}])}}
+
+julia> recovery_circuit = decode(meas);
+
+julia> print("Recovery circuit from MWPM2D decoder:", recovery_circuit)
+Recovery circuit from MWPM2D decoder:QuantumCircuit([{'Z': {4}, 'X': {10}}])
+```
+
+## `panqec`
 
 The python panqec module is immediately available:
 
