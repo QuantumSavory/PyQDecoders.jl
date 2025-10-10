@@ -1,5 +1,5 @@
 [deps]
-python = ">=3.10, <3.14"
+python = ">=3.10, <3.13"
 
 [pip.deps]
 numpy = ""
