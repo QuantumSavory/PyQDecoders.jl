@@ -1,6 +1,5 @@
 [deps]
-python = ">=3.10, <3.14"
-stim = ""
+python = ">=3.10, <3.13"
 
 [pip.deps]
 numpy = ""
@@ -8,4 +7,5 @@ scipy = ""
 pymatching = ""
 ldpc = ">=2.2.8"
 sinter = ">=1.14"
+stim = ">=1.14"
 fusion-blossom = ">=0.2.13"
