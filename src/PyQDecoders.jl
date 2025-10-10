@@ -10,6 +10,9 @@ const ldpccodes = PythonCall.pynew()
 const fb = PythonCall.pynew()
 const pecos = PythonCall.pynew()
 const pecosdecoders = PythonCall.pynew()
+const panqec = PythonCall.pynew()
+const panqeccodes = PythonCall.pynew()
+const panqecdecoders = PythonCall.pynew()
 
 function __init__()
     PythonCall.pycopy!(sp, PythonCall.pyimport("scipy"))
@@ -21,6 +24,9 @@ function __init__()
     PythonCall.pycopy!(fb, PythonCall.pyimport("fusion_blossom"))
     PythonCall.pycopy!(pecos, PythonCall.pyimport("pecos"))
     PythonCall.pycopy!(pecosdecoders, PythonCall.pyimport("pecos.decoders"))
+    PythonCall.pycopy!(panqec, PythonCall.pyimport("panqec"))
+    PythonCall.pycopy!(panqeccodes, PythonCall.pyimport("panqec.codes"))
+    PythonCall.pycopy!(panqecdecoders, PythonCall.pyimport("panqec.decoders"))
 end
 
 end # module
