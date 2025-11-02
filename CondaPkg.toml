@@ -1,13 +1,13 @@
 [deps]
 python = ">=3.10, <3.13"
-
-[pip.deps]
 numpy = ""
 scipy = ""
-pymatching = ""
+
+[pip.deps]
+fusion-blossom = ">=0.2.13"
 ldpc = ">=2.2.8"
+mwpf = ">=0.2.6"
+panqec = ">=0.1.7"
+pymatching = ""
 sinter = ">=1.14"
 stim = ">=1.14"
-fusion-blossom = ">=0.2.13"
-panqec = ">=0.1.7"
-mwpf = ">=0.2.6"
