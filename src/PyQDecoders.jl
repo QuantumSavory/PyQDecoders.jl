@@ -12,6 +12,9 @@ const panqec = PythonCall.pynew()
 const panqeccodes = PythonCall.pynew()
 const panqecdecoders = PythonCall.pynew()
 const mwpf = PythonCall.pynew()
+const tesseract = PythonCall.pynew()
+const tesseract_core = PythonCall.pynew()
+const tesseract_utils = PythonCall.pynew()
 
 function __init__()
     PythonCall.pycopy!(sp, PythonCall.pyimport("scipy"))
@@ -25,6 +28,9 @@ function __init__()
     PythonCall.pycopy!(panqeccodes, PythonCall.pyimport("panqec.codes"))
     PythonCall.pycopy!(panqecdecoders, PythonCall.pyimport("panqec.decoders"))
     PythonCall.pycopy!(mwpf, PythonCall.pyimport("mwpf"))
+    PythonCall.pycopy!(tesseract, PythonCall.pyimport("tesseract_decoder"))
+    PythonCall.pycopy!(tesseract_core, PythonCall.pygetattr(tesseract, "tesseract"))
+    PythonCall.pycopy!(tesseract_utils, PythonCall.pygetattr(tesseract, "utils"))
 end
 
 end # module
