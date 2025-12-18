@@ -1,30 +1,20 @@
-using SafeTestsets
 using PyQDecoders
+using TestItemRunner
 
-function doset(descr)
-    if length(ARGS) == 0
-        return true
-    end
-    for a in ARGS
-        if occursin(lowercase(a), lowercase(descr))
-            return true
-        end
-    end
-    return false
-end
+# filter for the test
+testfilter = ti -> begin
+  exclude = Symbol[]
+  if get(ENV,"JET_TEST","")!="true"
+    push!(exclude, :jet)
+  end
+  if !(VERSION >= v"1.10")
+    push!(exclude, :doctests)
+    push!(exclude, :aqua)
+  end
 
-macro doset(descr)
-    quote
-        if doset($descr)
-            @safetestset $descr begin
-                include("test_"*$descr*".jl")
-            end
-        end
-    end
+  return all(!in(exclude), ti.tags)
 end
 
 println("Starting tests with $(Threads.nthreads()) threads out of `Sys.CPU_THREADS = $(Sys.CPU_THREADS)`...")
 
-#VERSION >= v"1.9" && @doset "doctests"
-get(ENV,"JET_TEST","")=="true" && @doset "jet"
-VERSION >= v"1.9" && @doset "aqua"
+@run_package_tests filter=testfilter
