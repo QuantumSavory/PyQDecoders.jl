@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Home · PyQDecoders.jl</title><meta name="title" content="Home · PyQDecoders.jl"/><meta property="og:title" content="Home · PyQDecoders.jl"/><meta property="twitter:title" content="Home · PyQDecoders.jl"/><meta name="description" content="Documentation for PyQDecoders.jl."/><meta property="og:description" content="Documentation for PyQDecoders.jl."/><meta property="twitter:description" content="Documentation for PyQDecoders.jl."/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href>PyQDecoders.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li class="is-active"><a class="tocitem" href>Home</a><ul class="internal"><li class="toplevel"><a class="tocitem" href="#How-to-use"><span>How to use</span></a></li><li><a class="tocitem" href="#pymatching"><span><code>pymatching</code></span></a></li><li><a class="tocitem" href="#ldpc"><span><code>ldpc</code></span></a></li><li><a class="tocitem" href="#fusion-blossom"><span><code>fusion-blossom</code></span></a></li><li><a class="tocitem" href="#panqec"><span><code>panqec</code></span></a></li><li><a class="tocitem" href="#mwpf"><span><code>mwpf</code></span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Home</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Home</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/QuantumSavory/PyQDecoders.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/QuantumSavory/PyQDecoders.jl/blob/master/docs/src/index.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="PyQDecoders.jl"><a class="docs-heading-anchor" href="#PyQDecoders.jl">PyQDecoders.jl</a><a id="PyQDecoders.jl-1"></a><a class="docs-heading-anchor-permalink" href="#PyQDecoders.jl" title="Permalink"></a></h1><p>A Julia meta-package for accessing the python libraries <code>pymatching</code> (for MWPM-like decoders) and <code>ldpc</code> (for BP-like decoders).</p><h1 id="How-to-use"><a class="docs-heading-anchor" href="#How-to-use">How to use</a><a id="How-to-use-1"></a><a class="docs-heading-anchor-permalink" href="#How-to-use" title="Permalink"></a></h1><h2 id="pymatching"><a class="docs-heading-anchor" href="#pymatching"><code>pymatching</code></a><a id="pymatching-1"></a><a class="docs-heading-anchor-permalink" href="#pymatching" title="Permalink"></a></h2><p>The python pymatching module is immediately available:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders
+
+julia&gt; PyQDecoders.pm
+Python: &lt;module &#39;pymatching&#39; from ...&gt;</code></pre><p>Running the example from <code>pymatching</code>&#39;s original Readme:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders: sps, np, pm
+
+julia&gt; H = sps.csc_matrix(
+           [1 1 0 0 0;
+            0 1 1 0 0;
+            0 0 1 1 0;
+            0 0 0 1 1])
+Python:
+&lt;4x5 sparse matrix of type &#39;&lt;class &#39;numpy.int64&#39;&gt;&#39;
+        with 8 stored elements in Compressed Sparse Column format&gt;
+
+julia&gt; weights = [4, 3, 2, 3, 4]
+5-element Vector{Int64}:
+ 4
+ 3
+ 2
+ 3
+ 4
+
+julia&gt; matching = pm.Matching(H, weights=weights)
+Python: &lt;pymatching.Matching object with 4 detectors, 1 boundary node, and 5 edges&gt;
+
+julia&gt; prediction = matching.decode([0, 1, 0, 1])
+Python: array([0, 0, 1, 1, 0], dtype=uint8)
+
+julia&gt; prediction, solution_weight = matching.decode([0, 1, 0, 1], return_weight=true);
+
+julia&gt; prediction
+Python: array([0, 0, 1, 1, 0], dtype=uint8)
+
+julia&gt; solution_weight
+Python: 5.0</code></pre><h2 id="ldpc"><a class="docs-heading-anchor" href="#ldpc"><code>ldpc</code></a><a id="ldpc-1"></a><a class="docs-heading-anchor-permalink" href="#ldpc" title="Permalink"></a></h2><p>The python ldpc module is immediately available:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders
+
+julia&gt; PyQDecoders.ldpc
+Python: &lt;module &#39;ldpc&#39; from ...&gt;</code></pre><p>Running the example from <code>ldpc</code>&#39;s original Readme:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders: sps, np, ldpc
+
+julia&gt; H = ldpc.codes.rep_code(3) # parity check matrix for the length-3 repetition code
+Python:
+array([[1, 1, 0],
+       [0, 1, 1]])
+
+julia&gt; n = H.shape[1] # the codeword length, same as `size(H, 2)`
+Python: 3
+
+julia&gt; bpd = ldpc.bp_decoder(
+           H, # the parity check matrix
+           error_rate=0.1, # the error rate on each bit
+           max_iter=n, # the maximum iteration depth for BP
+           bp_method=&quot;product_sum&quot;, # BP method. The other option is `minimum_sum&#39;
+           channel_probs=[nothing] # channel probability probabilities. Will override error rate.
+       )
+Python: &lt;ldpc.bp_decoder.bp_decoder object at 0x...&gt;
+
+julia&gt; error = [0,1,0]
+3-element Vector{Int64}:
+ 0
+ 1
+ 0
+
+julia&gt; using PythonCall: PyArray
+
+julia&gt; syndrome = PyArray(H)*error .% 2
+2-element Vector{Int64}:
+ 1
+ 1
+
+julia&gt; decoding = bpd.decode(np.array(syndrome))
+Python: array([0, 1, 0])</code></pre><h2 id="fusion-blossom"><a class="docs-heading-anchor" href="#fusion-blossom"><code>fusion-blossom</code></a><a id="fusion-blossom-1"></a><a class="docs-heading-anchor-permalink" href="#fusion-blossom" title="Permalink"></a></h2><p>The python fusion-blossom module is immediately available:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders
+
+julia&gt; PyQDecoders.fb
+Python: &lt;module &#39;fusion_blossom&#39; from ...&gt;</code></pre><p>Running the example from <code>fusion-blossom</code>&#39;s original <a href="https://tutorial.fusionblossom.com/demo/example-qec-codes.html">example qec codes demo</a>:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders: fb;
+
+julia&gt; code = fb.CodeCapacityPlanarCode(d=11, p=0.05, max_half_weight=500);
+
+julia&gt; syndrome = code.generate_random_errors(seed=1000);
+
+julia&gt; initializer = code.get_initializer();
+
+julia&gt; solver = fb.SolverSerial(initializer);
+
+julia&gt; solver.solve(syndrome);
+
+julia&gt; subgraph = solver.subgraph();
+
+julia&gt; println(&quot;Minimum Weight Parity Subgraph (MWPS): &quot;, subgraph)
+Minimum Weight Parity Subgraph (MWPS): [14, 24, 26, 34, 66, 68, 93, 107, 144, 159, 161, 169]</code></pre><h2 id="panqec"><a class="docs-heading-anchor" href="#panqec"><code>panqec</code></a><a id="panqec-1"></a><a class="docs-heading-anchor-permalink" href="#panqec" title="Permalink"></a></h2><p>The python panqec module is immediately available:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders
+
+julia&gt; PyQDecoders.panqec
+Python: &lt;module &#39;panqec&#39; from ...&gt;</code></pre><p>Running the example from <code>panqec</code> <a href="https://panqec.readthedocs.io/en/latest/tutorials/Panqec%20basics.html">original tutorial</a>:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders: panqec, panqecdecoders
+
+julia&gt; Toric2DCode = panqec.codes.Toric2DCode;
+
+julia&gt; PauliErrorModel = panqec.error_models.PauliErrorModel;
+
+julia&gt; MatchingDecoder = panqecdecoders.MatchingDecoder;
+
+julia&gt; code = Toric2DCode(4)
+
+julia&gt; error_model = PauliErrorModel(0.2, 0.3, 0.5)
+
+julia&gt; p = 0.1
+
+julia&gt; decoder = MatchingDecoder(code, error_model, p)
+
+julia&gt; errors = error_model.generate(code, p)
+
+julia&gt; syndrome = code.measure_syndrome(errors)
+
+julia&gt; println(&quot;Errors: &quot;, errors)
+Errors: [0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+ 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+
+julia&gt; println(&quot;Syndrome: &quot;, syndrome)
+Syndrome: [0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0]</code></pre><h2 id="mwpf"><a class="docs-heading-anchor" href="#mwpf"><code>mwpf</code></a><a id="mwpf-1"></a><a class="docs-heading-anchor-permalink" href="#mwpf" title="Permalink"></a></h2><p>The python mwpf module is immediately available:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders
+
+julia&gt; PyQDecoders.mwpf
+Python: &lt;module &#39;mwpf&#39; from ...&gt;</code></pre><p>Running the example from <code>mwpf</code>&#39;s <a href="https://github.com/yuewuo/mwpf">original Readme</a>:</p><pre><code class="nohighlight hljs">julia&gt; using PyQDecoders: mwpf
+
+julia&gt; HyperEdge = mwpf.HyperEdge;
+
+julia&gt; SolverInitializer = mwpf.SolverInitializer;
+
+julia&gt; SolverSerialJointSingleHair = mwpf.SolverSerialJointSingleHair;
+
+julia&gt; SyndromePattern = mwpf.SyndromePattern;
+
+julia&gt; vertex_num = 4;
+
+julia&gt; weighted_edges = [
+       HyperEdge([0, 1], 100),  # [vertices], weight
+       HyperEdge([1, 2], 100),
+       HyperEdge([2, 3], 100),
+       HyperEdge([0], 100),  # boundary vertex
+       HyperEdge([0, 1, 2], 60),  # hyperedge
+       ];
+
+julia&gt; initializer = SolverInitializer(vertex_num, weighted_edges);
+
+julia&gt; hyperion = SolverSerialJointSingleHair(initializer);
+
+julia&gt; syndrome = [0, 1, 3];
+
+julia&gt; hyperion.solve(SyndromePattern(syndrome));
+
+julia&gt; hyperion_subgraph = hyperion.subgraph();
+
+julia&gt; println(&quot;Hyperion Subgraph: &quot;, hyperion_subgraph)
+Hyperion Subgraph: [2, 4]
+
+julia&gt; _, bound = hyperion.subgraph_range();
+
+julia&gt; println(&quot;Subgraph Range: &quot;, (bound.lower, bound.upper))
+Subgraph Range: (&lt;py OrderedFloat(160.0)&gt;, &lt;py OrderedFloat(160.0)&gt;)</code></pre></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Monday 20 July 2026 19:40">Monday 20 July 2026</span>. Using Julia version 1.12.6.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
