@@ -1,0 +1,6 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+PyQDecoders = "17f5de1a-9b79-4409-a58d-4d45812840f7"
+
+[compat]
+Documenter = "1"
