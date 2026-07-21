@@ -7,7 +7,7 @@ using PyQDecoders
 # imported to be declared as modules filtered out from analysis result
 using CondaPkg, PythonCall
 
-rep = report_package("PyQDecoders";
+rep = report_package(PyQDecoders;
     ignored_modules=(
         AnyFrameModule(CondaPkg),
         AnyFrameModule(PythonCall),
