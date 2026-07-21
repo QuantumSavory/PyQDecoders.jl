@@ -1,8 +1,8 @@
 const JET_PROJECT = normpath(joinpath(@__DIR__, "projects", "jet"))
 const test_args = isempty(ARGS) ? ["general"] : ARGS
-const jet_only = length(test_args) == 1 && startswith(only(test_args), "jet")
+const JET_flag = length(test_args) == 1 && startswith(only(test_args), "jet")
 
-if jet_only
+if JET_flag
   @info "Activating the dedicated JET test environment." project=JET_PROJECT
   using Pkg
   Pkg.activate(JET_PROJECT)
@@ -15,7 +15,7 @@ using TestItemRunner
 # filter for the test
 testfilter = ti -> begin
   exclude = Symbol[]
-  if jet_only
+  if JET_flag
     return :jet in ti.tags
   else
     push!(exclude, :jet)
